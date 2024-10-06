@@ -1,0 +1,1214 @@
+
+
+
+
+
+Docs
+
+
+
+
+
+
+
+
+
+
+ SourceBox
+
+
+
+
+
+
+Home
+
+
+Login
+
+
+Sign Up
+
+
+Support
+
+
+Dashboard
+
+
+
+
+Search
+
+
+
+
+
+
+
+
+
+
+Welcome
+Pack-Man
+SourceLightning
+DeepQuery
+DeepQuery Code
+
+
+
+
+
+
+
+
+
+
+            Welcome
+          
+
+
+
+Our Mission
+
+              At SourceBox, our mission is to simplify the integration of data with advanced AI tools, making it accessible and user-friendly for everyone.
+            
+Services
+
+              We provide a robust set of tools and platforms for data retrieval, packaging, and deployment.
+            
+Support
+
+              Our team is here to provide comprehensive support for your data integration and AI projects.
+            
+
+
+
+
+
+
+
+            Pack-Man
+          
+
+
+
+
+PackMan - The SourceBox Package Manager
+
+
+Packman is the bridge between your data and AI. Upload local files, web content, AWS buckets, github projects and more. Packman is the ultamite conection between your personalized data and is esential to many sourcebox services.
+
+
+Packs
+
+A pack is an organized package containing all of your uploaded data.
+
+
+
+Packs are passed to chat models and vector storage to perform Retrieval Augmented Generation from your own personailized data stored in packs.
+There are two kinds of packs on the SourceBox platform, regular packs and code packs.
+Regular packs are storage boxes for most common files.
+Code packs are storage boxes for code and code related files.
+
+Packs (regular):
+
+Local files
+Web content
+AWS files and buckets
+Used in DeepQuery
+Dropbox (coming soon)
+Google Drive (coming soon)
+
+
+Best choice for standard data
+
+
+Code Packs:
+
+Local files
+Github projects
+Used in DeepQuery Code
+
+
+Best choice for coding projects
+
+
+
+Data storage options
+
+Packman has many ways for you to import different kinds of data.
+
+
+Local Files and Webpages:
+
+You can upload files from your local computer to packs.
+Give a link to scrape and store web data in packs.
+
+
+Github Projects:
+
+you can upload entire github projects with nothing but the public url
+
+
+AWS:
+
+You can upload individual files from any public AWS s3 bucket.
+You can dump all files from any public AWS s3 bucket.
+
+
+
+Getting into it with Pack Panel
+
+The pack panel is where you actauly add your pack data to put it to work on the platform
+
+
+step 1. Name your pack.
+
+This is required to identify your pack accross the platform and easily switch between them
+
+
+step 2. Choose your data type.
+
+This is where you choose the type of data you want to upload
+
+
+types:
+- Local Files
+- Web Content
+- AWS Files and Buckets
+
+Make sure to click add data when you have the correct file or link you want to use. this will save the data for review.
+
+step 3. Review your pack data.
+
+This is where you will review your added pack data to make sure it is what you want before submitting the pack to the system
+
+
+
+Review data
+Click "Publish to pack" when you are ready to publish and start using the pack
+
+
+Thats it you are ready to use your data accross the platform
+
+
+
+
+Getting into it with Code Pack Panel
+
+The code panel is where you actually add your pack data to put it to work on the platform.
+
+
+step 1. Name your code pack.
+
+This is required to identify your pack accross the platform and easily switch between them
+
+
+step 2. Choose your data type.
+
+This is where you choose the type of data you want to upload
+
+
+types:
+- Github Codebase
+- Code Files
+- Common Files
+
+Make sure to click add data when you have the correct file or link you want to use. this will save the data for review.
+
+
+step 3. Review your code pack data.
+
+This is where you will review your added pack data to make sure it is what you want before submitting the pack to the system
+
+
+
+Review data
+Click "Publish to pack" when you are ready to publish and start using the pack
+
+
+Thats it you are ready to use your data accross the platform
+
+
+
+
+
+
+
+
+            Source-Lightning
+          
+
+
+
+
+Sorce Lightning
+
+
+Source Lightning is a service to provide local AI and templates off the SourceBox platform and straight on to your local machine. Wether you are looking for a quick local chat, a usefull agent, or building your own project you can count on Source Lightning getting you started lightning fast!
+
+
+
+Chat Applications
+Download chatbots to use locally in your console.
+
+Choose between models like OpenAI, Mistral, and Gemini
+Access models quickly and locally, no sign in required
+
+
+best for quick queries or when you dont feel like logging in!
+
+
+Download AI powered application to your local machine
+
+Monitor your machine load and specs with a full AI operations summary using PC scanner.
+Query your local files with our handy File Reader.
+Instantly Generate and automatically set PC backgrounds with nothing but a prompt with our Wallpaper Generator.
+access quickly and locally, no sign in required.
+
+
+PC Scanner
+The PC Scanner app scans your system specs and resources to give you a simplified system report
+Required
+
+Internet connection for AI model
+
+
+GPU
+Scans your GPU type and load.
+
+Scans your GPU type and load, providing detailed information on the current state of your graphics processing unit. This includes the model name, memory usage (both available and used), temperature, and system performance metrics such as the number of physical cores, logical threads, and GPU clock speeds. Additionally, it tracks how much memory is being used by your GPU in real-time, allowing you to monitor its efficiency and temperature during tasks. Keeping an eye on GPU load is crucial for graphic-intensive applications like gaming, 3D modeling, or video rendering. This data helps diagnose potential bottlenecks, overheating issues, or resource constraints.
+
+
+
+CPU
+Scans your CPU type and load.
+
+Scans your CPU type and load, providing real-time insights into your processor’s performance. It includes information such as CPU frequency, the number of physical cores and logical threads, as well as per-core usage statistics. The display also shows load averages over the past 1, 5, and 15 minutes, helping users monitor CPU load over time. Additional system metrics like context switches, interrupts, and system idle time are provided to help you gauge your processor's workload and efficiency. This data is critical for identifying whether your CPU is under heavy load or if there are opportunities to optimize for better performance in multi-core environments.
+
+
+
+Network
+Scans your network load.
+
+
+Scans your network load and provides detailed statistics about the current state of your network interfaces. This data includes the amount of data sent and received over each interface, as well as the number of packets transmitted and received. It also tracks any errors in transmission and reception, as well as packet drops. Monitoring your network load is essential for identifying bottlenecks, optimizing performance, and troubleshooting connectivity issues. This information can help you diagnose problems such as slow internet connections, packet loss, or network interface failures.
+
+
+
+Memory
+Scans your systems memory.
+
+
+Scans your system’s memory usage and provides a breakdown of available, used, and cached memory. It also shows important details such as the amount of swap space in use, cache memory, and memory allocated for system buffers. This insight is crucial for understanding how your system is handling memory resources, whether it's running efficiently or if it's at risk of running out of memory. Monitoring memory usage helps prevent system slowdowns and ensures optimal performance by identifying when you need to free up memory or increase system resources.
+
+
+
+Disk
+Scan your systems disc and disc space.
+
+Scans your system’s disk and provides detailed information about the available storage, file system type, and disk usage. This includes the total size of each mounted disk, the percentage of used space, and details about the read and write activities on each drive. Monitoring your disk space helps ensure that your system is not running out of storage, which can lead to performance degradation or failure of essential processes. Understanding disk usage can also assist in identifying potential storage bottlenecks or the need for disk cleanup.
+
+
+
+System Summary
+Get a full system summar with AI after system analysis.
+
+Get a comprehensive system summary generated by AI after a detailed analysis of your system’s hardware and performance. The summary provides an overview of critical system information, such as the number of CPU cores, memory usage, GPU performance, and disk capacity. It also highlights real-time metrics like CPU load per core, memory availability, and the amount of data being transferred over network interfaces. This summary helps users understand their system’s current health, potential performance issues, and resource utilization, offering valuable insights for optimizing system performance or troubleshooting problems.
+
+
+
+
+File Reader
+Use the File Reader app to query your local files with a chatbot connecting your local machine to AI
+
+The File Reader app allows you to easily interact with and query your local files using a chatbot powered by AI, enabling seamless integration between your local machine and advanced AI models. By leveraging this tool, users can open, read, and analyze a variety of file types directly from their local storage, making it simple to extract information and run queries on documents or data sets.
+
+Required
+Internet connection for AI model
+
+
+An internet connection is required to access the AI model, as the processing of queries happens through the AI system.
+
+How it works
+
+Simply upload a supported file, and the app will parse and analyze the content using a suitable handler based on the file type. The AI then uses this parsed data to generate responses and insights, allowing for interactive discussions with your files.
+
+
+
+Customers.csv
+
+
+
+
+
+Supported Files
+
+
+Text Files (.txt, .py, etc.) – handled by read_plain_text().
+
+
+
+PDF Files (.pdf) – handled by read_pdf() via PyPDF2.
+
+
+
+Word Documents (.docx) – handled by read_word_doc() via python-docx.
+
+
+
+Excel Files (.xlsx) – handled by read_excel() via openpyxl.
+
+
+
+CSV Files (.csv) – handled by read_csv() via the csv module.
+
+
+
+JSON Files (.json) – handled by read_json() via the json module.
+
+
+
+HTML Files (.html) – handled by read_html() via BeautifulSoup.
+
+
+
+XML Files (.xml) – handled by read_xml() via xml.etree.ElementTree.
+
+
+
+YAML Files (.yaml, .yml) – handled by read_yaml() via PyYAML.
+
+
+
+INI Configuration Files (.ini) – handled by read_ini() via configparser.
+
+
+Perfect for:
+- Extracting insights from reports, documents, and datasets.
+- Running queries on your local files with an AI assistant.
+- Quickly accessing relevant information without manually combing through files.
+
+
+
+
+Wallpaper Generator
+Automatically generate and set AI images as your computer background with nothing but a prompt.
+
+Transform your desktop effortlessly by generating stunning AI-driven images to use as your wallpaper with just a simple prompt. The Wallpaper Generator combines cutting-edge AI technology with seamless automation to bring your imagination to life and set it as your computer background instantly.
+
+Required
+
+Internet connection for AI model
+An internet connection is needed to access the AI model for image generation.
+
+
+
+
+Image Generation
+
+Wallpaper Generator uses OpenAI DALLE for the image generation
+
+How it Works
+
+Using OpenAI's powerful DALLE model, the Wallpaper Generator interprets your prompt and creates a high-quality image specifically tailored to be used as your desktop background. From landscapes to abstract art, the possibilities are endless.
+
+
+Setting your wallpaper
+
+No need to manually set the generated images yourself. The Wallpaper Generator handles the entire process from creation to application, automatically updating your background with the newly created image, saving you time and effort. Whether you’re looking for a serene nature scene, futuristic cityscapes, or personalized artwork, simply enter your desired prompt, and the Wallpaper Generator will handle the rest. It’s never been easier to refresh your workspace with unique, AI-generated art!
+
+
+
+
+
+
+
+
+
+Agents
+Download and execute AI agents built for various tasks localy in your console.
+
+AI Agents are specialized programs that can be downloaded and executed locally on your machine to perform a variety of tasks through the command line. These agents are designed to automate specific workflows and interact with your local environment, allowing you to complete tasks efficiently without the need for internet access once the agent is installed.
+
+Some features of agents include
+
+Task Automation: AI Agents can be prompted to complete a wide range of tasks, from simple operations like opening a console window to more complex file system management or script execution.
+
+
+
+Local Execution: All tasks are performed locally on your system, ensuring faster response times and allowing for offline usage after the initial setup.
+
+
+
+Prompt-Based Commands: Users interact with agents using natural language prompts. For instance, typing a prompt like "Open my console" will instruct the agent to open the command line interface.
+
+
+
+Versatile Use Cases: AI Agents can be configured for various purposes, such as managing files, automating processes, or gathering system information.
+
+
+
+AI Meets your console with your Local Command Agent.
+Take AI to the next step by connecting AI to your local command line!
+
+Elevate your workflow by integrating AI directly into your local command line with the Local Command Agent. This powerful tool brings AI capabilities to your console, enabling you to execute tasks, run commands, and interact with your system in entirely new ways. From automating repetitive tasks to providing real-time insights, the Local Command Agent seamlessly connects AI to your console, unlocking a new level of productivity and efficiency. Whether you're managing files, running scripts, or querying data, this integration allows you to leverage AI's potential right from your terminal, transforming how you interact with your computer.
+
+
+Example
+
+"Open my console."
+
+
+
+
+
+
+
+Stay up to date with financial news and get predictions with Finance Agent.
+Easily get caught up and stay in the financial know.
+
+
+Market Overview: Ask for a summary of how the stock market performed during the day, with key highlights of trends or major events.
+
+
+
+Stock Predictions: Get predictions on where a particular stock might be headed based on recent performance, global events, and market sentiment.
+
+
+
+Event Impact Analysis: Understand how a major event (such as earnings reports or geopolitical news) could affect stock prices and financial markets.
+
+
+Get more knowlegabe help with your coding projects with Code Agent.
+an agent with a code interpreter and stack exchange knowlege
+
+
+The Code Agent is a powerful AI tool designed to assist with coding projects by offering real-time code interpretation and troubleshooting support. Equipped with a built-in code interpreter and extensive knowledge from Stack Exchange, this agent can help developers of all skill levels improve their code, debug issues, and explore best practices.
+
+Features:
+
+Code Interpretation: The Code Agent can evaluate and execute code snippets, allowing you to test, debug, and refine your programs within your local environment. Whether you're writing Python, JavaScript, or other languages, the Code Agent helps by analyzing your code for errors and offering real-time solutions.
+
+
+
+Stack Exchange Integration: Leveraging the vast knowledge base of Stack Exchange, the agent can provide solutions to common coding problems, answer questions about programming concepts, and suggest optimal coding patterns. This ensures you have access to a wealth of community-driven knowledge without needing to leave your environment.
+
+
+
+Language Support: The Code Agent supports a wide range of programming languages and can assist with syntax clarification, function explanations, and even performance optimization tips based on the language you're using.
+
+
+
+Error Debugging: Easily diagnose issues in your code with detailed explanations of error messages, suggestions for fixes, and links to relevant resources. This allows you to quickly resolve bugs and keep your project on track.
+
+
+(console image 1) (console image 2)
+
+
+
+
+Access and query your Google Resources with Google Agent.
+Run an agent connected to your google accounts
+
+
+The Google Agent allows seamless integration with your Google account, providing access to key resources like Gmail, Google Drive, Google Sheets, Google Docs, and more. By connecting directly to your Google services, this agent enables you to manage, query, and automate tasks across your Google ecosystem—all through simple prompts.
+
+
+Features
+
+
+Gmail Integration: Query your email for specific messages, organize your inbox, or even send emails directly through the agent. Use prompts to find unread emails, search for messages based on keywords, or create drafts.
+
+
+
+Google Drive Access: Navigate and manage your Google Drive by searching for files, organizing folders, or retrieving document details. The agent can also help you upload or download files, allowing you to manage your cloud storage with ease.
+
+
+
+Google Sheets Queries: Work with spreadsheets by querying and updating your Google Sheets. Whether you need to retrieve specific data, perform calculations, or update cells, the agent helps automate your workflow.
+
+
+
+Google Docs Automation: Access and manipulate documents in Google Docs. Create new documents, search for keywords within documents, or make updates to existing content without needing to open Docs manually.
+
+
+
+Calendar Management: Query and update your Google Calendar by adding events, checking upcoming appointments, or receiving reminders. The agent simplifies calendar management by syncing directly with your schedule.
+
+
+(console image 1) (console image 2)
+
+
+
+
+Getting Into It With Apps
+PC Scanner
+
+
+The PC Scanner app scans your system specs and resources to give you a simplified system report
+
+
+Getting started
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Apps".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting "PC Scanner".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/search?q=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Run the executable "PC Monitor" When the app starts the scan will begin. Once it is finished the results will be interpreted by the OpenAI model and your system summary will be displayed.
+
+
+
+Choose either "Run system scan again" to perform a fresh new system scan, "Regenerate report on last system scan" to regenerate a new summary on your previous scan, or "Exit" to close the application.
+
+
+
+
+
+File Reader
+
+
+Use the File Reader app to query your local files with a chatbot connecting your local machine to AI
+
+
+Getting started
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Apps".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting File Reader".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/searchq=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Run the executable "File Reader" When the app starts select either "Query file contents" to query using a single file, "Query directory contents" to query all the contents in a folder (to many files will result in an error), "Raw query" to directly query the data itself, or "Exit" to close the program.
+
+
+Query File Contents:
+
+
+Enter the full file path to the file you want to query.
+
+
+
+Enter a prompt to send with the file. Your Response will display once generated.
+
+
+Query Directory Contents:
+
+
+Enter the full folder path to the folder you want to query.
+
+
+
+Enter a prompt to send with the folder data. Your Response will be displayed once generated.
+
+
+Raw Query
+
+
+Enter the full path to the folder or file you want to query.
+
+
+
+Enter a prompt to perform a raw query on your data. Your response will be displayed once the query has finished.
+
+
+
+
+
+Wallpaper Generator
+
+
+Use the Wallpaper Generator to generate and set images as your machines wallpaper background.
+
+
+Getting started
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Apps".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting Wallpaper Generator".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/searchq=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Start your application and enter a prompt, wait for the app to finish, and Thats it! Change your background as many times as you want automatically.
+
+
+
+
+
+
+Getting into it with Agents
+Download and execute AI agents built for various tasks localy in your console.
+
+Local Command Agent
+Local Command Agent gives your AI the power of your console.
+Getting started
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Agents".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting "Local Command Agent".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/searchq=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Start the application and enter the prompt for the operation you wish to perform.
+
+
+Prompt examples:
+
+
+"Open Console"
+"Create a text file called 'agent_test' and save it to my desktop"
+"write a reminder 'Take out the trash tonight' to my text file 'agent_test.txt' located on my desktop."
+
+
+
+Finance Agent
+
+
+Stay up to date with financial news and get predictions with Finance Agent
+
+
+Getting started
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Agents".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting "Finance Agent".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/searchq=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Start the application and enter your query to the Finance Agent.
+
+
+Prompt examples:
+
+
+"How has Apple been performing this week?"
+"Based on recent price and news, how might Apple stock perform this week"
+
+
+
+
+
+Code Agent
+
+
+An agent with a code interpreter and stack exchange knowlege.
+
+
+Getting Started
+
+
+First go to https://sourcebox-sourcelightning-8952e6a21707.herokuapp.com
+
+
+
+Next, select either "Apps" or "Agents" using the side arrows and click "Show Downloads". In this case we are selecting "Agents".
+
+
+
+Select your application based on the descriptions and your requirements. In this case we are selecting "Code Agent".
+
+
+
+Click "Download", wait a few seconds, and save it to your machine.
+
+
+
+Unzip the files.
+
+
+
+If you do not know how to unzip files search here:
+
+
+[https://www.google.com/searchq=how+to+unzip+a+file&oq=how+to+unzip+a+file&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABDIHCAkQABiABNIBCDU3ODhqMGo3qAIIsAIB&sourceid=chrome&ie=UTF-8]
+
+
+
+Open the unziped folder and find the executable in the "dist" folder.
+
+
+
+Start the application and enter your query to the Code Agent.
+
+
+Prompts:
+
+
+Pass in code and errors.
+test code quickly
+look up possilbe solutions
+
+
+
+
+
+
+
+
+
+
+
+
+            DeepQuery
+          
+
+
+
+
+DeepQuery
+
+
+
+DeepQuery is your solution for turning static data into dynamic, actionable insights. With DeepQuery, you can effortlessly connect your data packs and interact with your customized AI chatbot, enabling you to extract valuable information, explore complex data sets, and gain deeper understanding from your resources.
+
+
+
+DeepQuery is different than DeepQuery Code. The main difference is DeepQuery Code is for github projects and code related files while DeepQuery is for everything else.
+
+
+
+Learn more about DeepQuery Code here (link to deepquery code documentation)
+
+
+How it works
+
+DeepQuery connects directly to your structured data packs, allowing you to ask complex questions and get relevant responses based on the content within these packs. By utilizing a vector search algorithm, DeepQuery identifies and retrieves the most pertinent data points, helping you find exactly what you’re looking for with minimal effort.
+
+
+Switch back and fourth between packs quick and easy
+
+DeepQuery makes it very easy to change packs and subjects. just click on "Use pack data" and select a different pack than the ones you are using.
+Packs are optional, you do not need to use any data at all to use DeepQuery! Just select "No Pack" to use Deepquery with no added data!
+
+
+Query your data with or without AI intervention.
+
+Query your data with a chatbot. Once you select your pack of choice, you can now query your data with a chatbot. The chatbot will use your data as the context for all of your quiries. 
+
+
+
+Raw query your data directly without a chatbot. Once you select your pack of choice, you can query just your pack data without a chat model! Once you enter your query you will recieve the vector search algorithm results of your query displaying the relevent bits of your data.
+
+
+
+Note: If you select "No Pack" you cannot preform a raw query. Raw queries can only be performed with pack data.
+
+
+Choose a selection of AI generated prompts or use your own custom ones.
+
+Generated
+
+Dont know what prompt to use? No worries just use one of ours! DeepQuery offers a variety of pre-generated AI prompts to help you explore your data effortlessly. These prompts are designed to cover a broad range of scenarios and typical queries, making it easy for you to engage with your data even if you’re new to the platform or unfamiliar with the content.
+
+
+
+Simply browse through the available options and select a prompt that fits your needs. Whether you’re looking to get a quick summary, identify key insights, or dive into specific sections of your dataset, these AI-generated prompts provide a solid starting point to get the most out of your data without needing to craft a detailed question yourself.
+
+
+Custom
+
+To create more tailored and specific interactions, you can use the Custom Prompt feature to craft your own queries. This allows you to go beyond the standard AI-generated prompts and ask questions that are directly relevant to your unique data and research needs.
+
+
+
+To get started, simply select the “Custom Prompt” option, type your desired question, command, or prompt into the input field, and submit it to the chatbot. The AI will then analyze your input using the context provided by your selected data pack, delivering responses that are finely tuned to your request. This flexibility enables you to explore complex topics, retrieve detailed insights, or address highly specific use cases that may not be covered by the default prompts.
+
+
+
+Custom prompts are ideal when you want precise answers, perform in-depth analysis, or interact with your data in a way that aligns with your specific project requirements.
+
+
+
+
+
+Getting into it with DeepQuery
+
+brief explanation
+
+
+First go to (DeepQuery link)
+
+
+Using DeepQuery without pack data
+
+Click on "select pack" then choose the option "No Pack".
+
+
+
+Toggle the chatbot on with the toggle button
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your results!
+
+
+Using DeepQuery with pack data
+
+First make sure you have pack data to use. If you dont have any pack data go to PackMan and create one.
+
+
+
+You can learn about PackMan and how to create packs here: (link to creating packs section of packman docs)
+
+
+
+Click on "select pack" then choose the pack you want to use.
+
+
+
+Toggle the chatbot on with the toggle button
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your results!
+
+
+Using Raw Vector Searches with DeepQuery
+
+First make sure you have pack data to use. If you dont have any pack data go to PackMan and create one.
+
+
+
+You can learn about PackMan and how to create packs here: (link to creating packs section of packman docs)
+
+
+
+Click on "select pack" then choose the pack you want to use.
+
+
+
+Make sure the chatbot toggle button is off
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your raw file results!
+
+
+
+
+
+
+
+
+            DeepQuery Code
+          
+
+
+
+
+DeepQuery Code
+
+
+
+DeepQuery Code is your solution for turning your code projects into dynamic, actionable insights. With DeepQuery Code, you can effortlessly connect your code packs and interact with your customized AI chatbot, enabling you to extract valuable information, explore complex data sets, and gain deeper understanding from your resources.
+
+
+
+DeepQuery Code is different than DeepQuery. The main difference is DeepQuery Code is for github projects and code related files while DeepQuery is for everything else.
+
+
+
+Learn more about DeepQuery here: (link to deepquery documentation)
+
+
+How it works
+
+DeepQuery Code connects directly to your structured code packs, allowing you to ask complex questions and get relevant responses based on the content within these packs. By utilizing a vector search algorithm, DeepQuery Code identifies and retrieves the most relevent code points, helping you find exactly what you’re looking for with minimal effort.
+
+
+Switch back and fourth between packs quick and easy
+
+DeepQuery Code makes it very easy to change packs and subjects. just click on "Use pack data" and select a different pack than the ones you are using.
+Packs are optional, you do not need to use any data at all to use DeepQuery Code! Just select "No Pack" to use Deepquery with no added data!
+
+
+Query your data with or without AI intervention.
+
+Query your data with a chatbot. Once you select your pack of choice, you can now query your data with a chatbot. The chatbot will use your data as the context for all of your quiries. 
+
+
+
+Raw query your data directly without a chatbot. Once you select your pack of choice, you can query just your code pack data without a chat model! Once you enter your query you will recieve the vector search algorithm results of your query displaying the relevent bits of your data.
+
+
+
+Note: If you select "No Pack" you cannot preform a raw query. Raw queries can only be performed with pack data.
+
+
+Choose a selection of AI generated prompts or use your own custom ones.
+
+Generated
+
+Dont know what prompt to use? No worries just use one of ours! DeepQuery Code offers a variety of pre-generated AI prompts to help you explore your code effortlessly. These prompts are designed to cover a broad range of scenarios and typical queries, making it easy for you to engage with your data even if you’re new to the platform or unfamiliar with the content.
+
+
+
+Simply browse through the available options and select a prompt that fits your needs. Whether you’re looking to get a quick summary, identify key insights, or dive into specific sections of your dataset, these AI-generated prompts provide a solid starting point to get the most out of your data without needing to craft a detailed question yourself.
+
+
+Custom
+
+To create more tailored and specific interactions, you can use the Custom Prompt feature to craft your own queries. This allows you to go beyond the standard AI-generated prompts and ask questions that are directly relevant to your unique data and research needs.
+
+
+
+To get started, simply select the “Custom Prompt” option, type your desired question, command, or prompt into the input field, and submit it to the chatbot. The AI will then analyze your input using the context provided by your selected data pack, delivering responses that are finely tuned to your request. This flexibility enables you to explore complex topics, retrieve detailed insights, or address highly specific use cases that may not be covered by the default prompts.
+
+
+
+Custom prompts are ideal when you want precise answers, perform in-depth analysis, or interact with your data in a way that aligns with your specific project requirements.
+
+
+
+
+
+Getting into it with DeepQuery Code
+
+brief explanation
+
+
+First go to (DeepQuery Code link)
+
+
+Using DeepQuery Code without pack data
+
+Click on "select pack" then choose the option "No Pack".
+
+
+
+Toggle the chatbot on with the toggle button
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your results!
+
+
+Using DeepQuery Code with pack data
+
+First make sure you have pack data to use. If you dont have any pack data go to PackMan and create one.
+
+
+
+You can learn about PackMan and how to create packs here: (link to creating packs section of packman docs)
+
+
+
+Click on "select pack" then choose the pack you want to use.
+
+
+
+Toggle the chatbot on with the toggle button
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your results!
+
+
+Using Raw Vector Searches with DeepQuery Code
+
+First make sure you have pack data to use. If you dont have any pack data go to PackMan and create one.
+
+
+
+You can learn about PackMan and how to create packs here: (link to creating packs section of packman docs)
+
+
+
+Click on "select pack" then choose the pack you want to use.
+
+
+
+Make sure the chatbot toggle button is off
+
+
+
+In the chatbot select one of the pre generated prompts or select "Custom Prompt" then add your custom prompt.
+
+
+
+Once you have your prompt either press the Enter key on your machine or the button to submit your prompt
+
+
+
+Enjoy your raw code results!
+
+
+
+
+
+
+
+
+
+
+
+
+
