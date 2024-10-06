@@ -54,9 +54,7 @@ def create_tweet(text):
 tweet_log = load_tweet_log()
 gpt_response = chat_gpt(tweet_log)
 
-if __name__ == "__main__":
-   
-    create_tweet(gpt_response)
-    print("Tweet created successfully")
 
+create_tweet(gpt_response)
+print("Tweet created successfully")
     
