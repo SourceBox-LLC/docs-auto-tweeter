@@ -4,12 +4,12 @@ from dotenv import load_dotenv
 from gpt import chat_gpt
 from docs_scrape import scrape_docs
 import os, sys
-import json
+import json, time
 
 load_dotenv()
 
 
-# scrape docs
+# scrape docs to docs.txt
 scrape_docs()
 
 
@@ -35,7 +35,7 @@ def load_tweet_log():
     if os.path.exists(TWEET_LOG_FILE):
         with open(TWEET_LOG_FILE, 'r') as file:
             tweet_log = json.load(file)
-            return tweet_log[-20:]  # Return only the last 20 tweets
+            return tweet_log[-25:]  # Return only the last 20 tweets
     else:
         return []
 
@@ -53,8 +53,12 @@ def create_tweet(text):
 
 tweet_log = load_tweet_log()
 gpt_response = chat_gpt(tweet_log)
-
-
 create_tweet(gpt_response)
 print("Tweet created successfully")
     
+time.sleep(5)
+
+tweet_log2 = load_tweet_log()
+gpt_response2 = chat_gpt(tweet_log2)
+create_tweet(gpt_response2)
+print("Tweet created successfully")
