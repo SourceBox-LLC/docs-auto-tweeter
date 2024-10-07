@@ -39,10 +39,10 @@ def chat_gpt(tweets):
                             You are a Twitter social media manager for the tech startup 'SourceBox LLC'. 
                             All responses must be 200 characters or less. You must follow a unique style for each tweet.
                             Current style: {random_style}.
-                            Your tweets must be in the scope of the SourceBox documentation here: {doc_content()}.
+                            Your tweets must be in the scope of the SourceBox documentation here, get specific: {doc_content()}.
                             Your tweets must be unique and must not be similar to any of the previous tweets listed here:
                             {formatted_tweets}.
-                            Use exactly {random_number} relevant hashtag(s) that match the current style and context.'''
+                            You must use exactly {random_number} relevant hashtag(s) that match the current style and context.'''
             },
             {
                 "role": "user",
@@ -63,24 +63,37 @@ def chat_gpt(tweets):
 
 
 def image_gen(tweet, filename="generated_image.png"):
-    """Generate an image using OpenAI's DALL-E and save it as a file."""
-    response = client.images.generate(
-        model="dall-e-3",
-        prompt=tweet,
-        size="1024x1024",
-        quality="standard",
-        n=1,
-    )
-    # Get the image URL from the response
-    image_url = response.data[0].url
+    """Generate an image using OpenAI's DALL-E model and save it as a local file."""
+    try:
+        # Generate the image using OpenAI's DALL-E
+        response = client.images.generate(
+            model="dall-e-3",
+            prompt=tweet,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+        
+        # Check if the response contains the generated image URL
+        if not response or "data" not in response or len(response["data"]) == 0:
+            print("Error: No image URL returned by OpenAI.")
+            return None
 
-    # Download the image and save it as a file
-    image_response = requests.get(image_url)
-    if image_response.status_code == 200:
-        with open(filename, 'wb') as file:
-            file.write(image_response.content)
-        print(f"Image saved successfully as {filename}")
-    else:
-        print(f"Failed to download the image. Status code: {image_response.status_code}")
-    
+        # Extract the image URL from the response
+        image_url = response["data"][0]["url"]
+
+        # Download the image and save it as a file
+        image_response = requests.get(image_url)
+        if image_response.status_code == 200:
+            with open(filename, 'wb') as file:
+                file.write(image_response.content)
+            print(f"Image saved successfully as {filename}")
+        else:
+            print(f"Failed to download the image. Status code: {image_response.status_code}")
+            return None
+
+    except Exception as e:
+        print(f"An error occurred while generating or downloading the image: {e}")
+        return None
+
     return filename  # Return the filename of the saved image
