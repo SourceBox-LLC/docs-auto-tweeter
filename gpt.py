@@ -9,40 +9,64 @@ def doc_content():
     with open('docs.txt', 'r', encoding='utf-8') as file:
         return file.read()
 
+# Define some random modifiers for tweet variety
+tweet_styles = ["informative", "promotional", "exciting", "engaging", "casual"]
 
+# Choose a random style for this tweet
+random_style = random.choice(tweet_styles)
+
+# Define hashtag amount and choose a random number
 hashtag_ammount = [1, 2, 3, 4]
-
-# Randomly select a number from the list
 random_number = random.choice(hashtag_ammount)
 
-def chat_gpt(tweets):
-    client = OpenAI(
-        # This is the default and can be omitted
-        api_key = os.getenv('OPENAI_API_KEY')
+
+client = OpenAI(
+        api_key=os.getenv('OPENAI_API_KEY')
     )
+
+
+def chat_gpt(tweets):
+
+    # Reformat previous tweets into a structured list to give the model better context
+    formatted_tweets = "\n".join([f"- {tweet}" for tweet in tweets])
 
     chat_completion = client.chat.completions.create(
         messages=[
             {
                 "role": "system",
                 "content": f'''
-                            You are a twitter social media manager for the tech startup 'SourceBox LLC'. 
-                            All responses must be 200 characters or less.
+                            You are a Twitter social media manager for the tech startup 'SourceBox LLC'. 
+                            All responses must be 200 characters or less. You must follow a unique style for each tweet.
+                            Current style: {random_style}.
                             Your tweets must be in the scope of the SourceBox documentation here: {doc_content()}.
-                            Your tweets must be unique and not repeat any previous tweets.
-                            Allways use {random_number} relevent hashtag(s).
-                            Allways add the hashtag SourceBoxLLC.
-                            Always Provide the link https://www.sourcebox.cloud at the bottom of your tweets''',
+                            Your tweets must be unique and must not be similar to any of the previous tweets listed here:
+                            {formatted_tweets}.
+                            Use exactly {random_number} relevant hashtag(s) that match the current style and context.'''
             },
             {
                 "role": "user",
-                "content": f"Generate a tweet. Previous tweets: {tweets}",
+                "content": f"Generate a tweet. Here is the history of our previous tweets:\n{formatted_tweets}",
             }
         ],
-        model="gpt-4o",
+        model="gpt-4",
     )
 
     # Access the content using the 'message' attribute of the Choice object
     assistant_message = chat_completion.choices[0].message.content
 
     return assistant_message
+
+
+
+
+def image_gen(tweet):
+    response = client.images.generate(
+        model="dall-e-3",
+        prompt=tweet,
+        size="1024x1024",
+        quality="standard",
+        n=1,
+    )
+    image_url = response.data[0].url
+
+    return image_url
