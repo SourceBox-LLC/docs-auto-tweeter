@@ -2,6 +2,7 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 import random
+import requests
 
 load_dotenv()
 
@@ -59,7 +60,10 @@ def chat_gpt(tweets):
 
 
 
-def image_gen(tweet):
+
+
+def image_gen(tweet, filename="generated_image.png"):
+    """Generate an image using OpenAI's DALL-E and save it as a file."""
     response = client.images.generate(
         model="dall-e-3",
         prompt=tweet,
@@ -67,6 +71,16 @@ def image_gen(tweet):
         quality="standard",
         n=1,
     )
+    # Get the image URL from the response
     image_url = response.data[0].url
 
-    return image_url
+    # Download the image and save it as a file
+    image_response = requests.get(image_url)
+    if image_response.status_code == 200:
+        with open(filename, 'wb') as file:
+            file.write(image_response.content)
+        print(f"Image saved successfully as {filename}")
+    else:
+        print(f"Failed to download the image. Status code: {image_response.status_code}")
+    
+    return filename  # Return the filename of the saved image

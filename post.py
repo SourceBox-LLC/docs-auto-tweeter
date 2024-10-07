@@ -8,10 +8,10 @@ import json, time, random
 load_dotenv()
 
 
-#image = image_gen("Easily connect your data to AI with PackMan! Transfer files from local, web, AWS, and more. Elevate your AI projects with personalized data packs. 📦 #PackMan https://sourcebox.cloud")
-#print(image)
+image = image_gen("Easily connect your data to AI with PackMan! Transfer files from local, web, AWS, and more. Elevate your AI projects with personalized data packs. 📦 #PackMan https://sourcebox.cloud")
+print(image)
 
-#sys.exit()
+sys.exit()
 
 # scrape docs to docs.txt
 scrape_docs()
@@ -61,8 +61,8 @@ random_daily = random.choice(daily_posts)
 # Create tweets based on the randomly chosen number
 for _ in range(random_daily):
 
-     # Set random sleep intervals between tweets (in seconds)
-    sleep_intervals = [10, 20, 40, 80, 100]  # Sleep intervals in seconds
+    # Set random sleep intervals between tweets (in seconds)
+    sleep_intervals = [10, 20, 40, 80, 100, 1200]  # Sleep intervals in seconds
     random_sleep = random.choice(sleep_intervals)
 
     # Wait for a random amount of time before posting the next tweet
