@@ -3,8 +3,11 @@ import os
 from dotenv import load_dotenv
 import random
 import requests
+from langchain_community.tools import DuckDuckGoSearchRun
 
 load_dotenv()
+
+search = DuckDuckGoSearchRun()
 
 def doc_content():
     with open('docs.txt', 'r', encoding='utf-8') as file:
@@ -26,6 +29,33 @@ client = OpenAI(
     )
 
 
+def topics():
+    topics = ['tips', 'news', 'trends', 'fun facts', 'Motivational', 'engagement question']
+
+    random_topic = random.choice(topics)
+
+    if random_topic == 'tips':
+        instructions = 'Create a random AI tip post.'
+
+    elif random_topic == 'news':
+        news = search.invoke("What is the latest news in AI?")
+        instructions = f'Create a post about the latest AI news here: {news}.'
+
+    elif random_topic == 'trends':
+        news = search.invoke("What is the latest news in AI?")
+        instructions = f'Share some trending topic in the AI or tech space: {news}.'
+
+    elif random_topic == 'fun facts':
+        instructions = 'Post a fun fact about AI, technology, or startups.'
+
+    elif random_topic == 'Motivational':
+        instructions = 'Share a motivational quote or thought for entrepreneurs and developers.'
+        
+    elif random_topic == 'engagement question':
+        instructions = 'Ask a question to engage your audience (e.g., "What’s your favorite AI tool?").'
+
+    return instructions
+
 def chat_gpt(tweets):
 
     # Reformat previous tweets into a structured list to give the model better context
@@ -38,10 +68,14 @@ def chat_gpt(tweets):
                 "content": f'''
                             You are a Twitter social media manager for the tech startup 'SourceBox LLC'. 
                             All responses must be 200 characters or less. You must follow a unique style for each tweet.
+
                             Current style: {random_style}.
-                            Your tweets must be in the scope of the SourceBox documentation here, get specific: {doc_content()}.
+                            Current subject: {topics()}
+                            
+
                             Your tweets must be unique and must not be similar to any of the previous tweets listed here:
                             {formatted_tweets}.
+
                             You must use exactly {random_number} relevant hashtag(s) that match the current style and context.'''
             },
             {
