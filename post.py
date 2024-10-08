@@ -95,8 +95,8 @@ random_daily = random.choice(daily_posts)
 for _ in range(random_daily):
 
     # Set random sleep intervals between tweets (in seconds)
-    #sleep_intervals = [10, 20, 40, 80, 100, 120]  # Sleep intervals in seconds
-    sleep_intervals = [1, 2]
+    sleep_intervals = [10, 20, 40, 80, 100, 120]  # Sleep intervals in seconds
+    #sleep_intervals = [1, 2] # for testing
     random_sleep = random.choice(sleep_intervals)
 
     # Wait for a random amount of time before posting the next tweet
