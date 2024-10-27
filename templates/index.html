@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SourceBox Social Media</title>
+    <script>
+        function startStream() {
+            const form = document.querySelector('form');
+            const formData = new FormData(form);
+            const prompt = formData.get('prompt');
+
+            // Send the prompt using fetch
+            fetch('/agent', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ prompt: prompt })
+            }).then(response => {
+                if (response.ok) {
+                    // Start the EventSource stream
+                    const eventSource = new EventSource('/agent');
+                    eventSource.onmessage = function(event) {
+                        const output = document.getElementById('output');
+                        output.innerHTML += event.data + "<br>";
+                    };
+                } else {
+                    console.error('Failed to send prompt');
+                }
+            }).catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>SourceBox Social Media</h1>
+    <form onsubmit="startStream(); return false;">
+        <select name="prompt">
+            <option value="tweet about the latest platform updates.">tweet about the latest platform updates.</option>
+            <option value="advertise services from the documentation.">advertise services from the documentation.</option>
+            <option value="create a step by step user tutorial using information from the documentation.">create a step by step user tutorial using information from the documentation.</option>
+            <option value="tweet about the benefits of using SourceBox">tweet about the benefits of using SourceBox</option>
+            <option value="tweet about recent AI news and fun facts using internet search tool">tweet about recent AI news and fun facts using internet search tool</option>
+        </select>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+</body>
+</html>

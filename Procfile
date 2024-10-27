@@ -1,1 +1,1 @@
-worker: python post.py
+worker: python agent.py

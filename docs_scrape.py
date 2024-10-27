@@ -1,19 +1,37 @@
 from langchain_community.document_loaders import WebBaseLoader
+from langchain_community.vectorstores import DeepLake
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import CharacterTextSplitter
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def scrape_docs():
     # Load the document from the URL
     loader = WebBaseLoader("https://www.sourcebox.cloud/docs")
-    docs = loader.load()
+    documents = loader.load()
 
-    # Get the content from the first document
-    content = docs[0].page_content
+    text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+    docs = text_splitter.split_documents(documents)
 
-    # Define the output file path
-    output_file = "docs.txt"
+    embeddings = OpenAIEmbeddings()
 
-    # Write the content to the file, overwriting any existing content
-    with open(output_file, 'w', encoding='utf-8') as file:
-        file.write(content)
+    db = DeepLake(dataset_path="./my_deeplake/", embedding=embeddings, overwrite=True)
+    db.add_documents(docs)
 
-    print(f"Content written to {output_file} successfully.")
+    return db  # Return the db object
+
+
+def query_docs(db, prompt):
+    docs = db.similarity_search(prompt)
+    return docs
+
+
+
+# Call scrape_docs to get the db object
+db = scrape_docs()
+
+# Use the db object in query_docs
+query = query_docs(db, "What is the sourcelightning service?")
+#print(query)
