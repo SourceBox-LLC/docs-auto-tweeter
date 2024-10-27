@@ -91,6 +91,8 @@ def create_tweet(text):
 daily_posts = [2, 3]  # Number of tweets to post each day (random choice between 2 and 3)
 random_daily = random.choice(daily_posts)
 
+
+
 # Create tweets based on the randomly chosen number
 for _ in range(random_daily):
 
@@ -113,3 +115,4 @@ for _ in range(random_daily):
         create_tweet(gpt_response)
     except Exception as e:
         print(f"Error generating or posting tweet: {e}")
+
