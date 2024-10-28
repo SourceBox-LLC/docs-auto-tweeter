@@ -2,6 +2,7 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_community.vectorstores import DeepLake
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
+from langchain_huggingface import HuggingFaceEmbeddings
 from dotenv import load_dotenv
 import logging
 
@@ -21,7 +22,6 @@ def scrape_docs():
         db = DeepLake(dataset_path="./my_deeplake/", embedding=embeddings, overwrite=True)
         db.add_documents(docs)
     except Exception as e:
-        from langchain_huggingface import HuggingFaceEmbeddings
 
         if "rate limit" in str(e).lower() or "429" in str(e):
             logging.warning("OpenAI rate limit exceeded, switching to HuggingFace embeddings.")

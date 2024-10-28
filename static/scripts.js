@@ -1,35 +1,29 @@
 function startStream() {
-    const form = document.querySelector('form');
-    const formData = new FormData(form);
-    let prompt = formData.get('prompt');
+    const outputElement = document.getElementById('output');
+    outputElement.innerHTML = ''; // Clear previous output
 
-    const customPromptArea = document.getElementById('customPromptArea');
-    const customPromptText = document.getElementById('customPromptText').value.trim();
+    const eventSource = new EventSource('/agent');
+    eventSource.onmessage = function(event) {
+        const data = JSON.parse(event.data);
+        const formattedText = formatResponse(data);
+        outputElement.innerHTML += `<p>${formattedText}</p>`;
+    };
 
-    // Use custom prompt if it's visible and not empty
-    if (customPromptArea.style.display === 'block' && customPromptText) {
-        prompt = customPromptText;
+    eventSource.onerror = function() {
+        outputElement.innerHTML += '<p><strong>Error:</strong> Unable to stream data.</p>';
+        eventSource.close();
+    };
+}
+
+//format agent stream response
+function formatResponse(data) {
+    // Check if the data contains text
+    if (data.text) {
+        // Replace newlines with HTML line breaks and wrap in a paragraph
+        return `<p>${data.text.replace(/\n/g, '<br/>')}</p>`;
     }
-
-    // Send the prompt using fetch
-    fetch('/agent', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams({ prompt: prompt })
-    }).then(response => {
-        if (response.ok) {
-            // Start the EventSource stream
-            const eventSource = new EventSource('/agent');
-            eventSource.onmessage = function(event) {
-                const output = document.getElementById('output');
-                output.innerHTML += event.data + "<br>";
-            };
-        } else {
-            console.error('Failed to send prompt');
-        }
-    }).catch(error => console.error('Error:', error));
+    // Fallback to JSON string with additional formatting
+    return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
 }
 
 function toggleCustomPrompt() {

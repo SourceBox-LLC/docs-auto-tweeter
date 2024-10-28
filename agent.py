@@ -14,22 +14,24 @@ from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.messages import SystemMessage
 from docs_scrape import scrape_docs, query_docs
 import psycopg2
+import json
 
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Load environment variables
 load_dotenv()
 
 # Initialize memory and model
 memory = MemorySaver()
-model = ChatOpenAI(model="gpt-4")
+#model = ChatOpenAI(model="gpt-4")
+model = ChatAnthropic(model="claude-3-sonnet-20240229")
 
 # Initialize search tool
 search = TavilySearchResults(max_results=2)
 
 # Create an OpenAI client
-client = OpenAI()
+#client = OpenAI()
 
 # Replace these with your actual credentials
 consumer_key = os.getenv('CONSUMER_KEY')
@@ -150,40 +152,52 @@ def Agent(user_prompt):
     # Define the system prompt
     system_prompt = f"""
     You are the lead social media manager for SourceBox LLC with access to tools for creating tweets. 
-    Your job is to tweet about:
-    1. latest platform updates.
-    2. advertise services from the documentation
-    3. step by step user tutorial using information from the documentation.
-    4. benefits of using SourceBox using information from the documentation.
-    5. AI news and fun facts using internet search tool
+    Your job is to use USER PROMPT to create engagement for the SourceBox platform and gain followers.
+    ALL TWEETS MUST BE NO MORE THAN 270 CHARACTERS. THAT IS THE TWITTER LIMIT.
 
     RULES:
-    - DO NOT SPAM TWEETS.
+    - Only complete the USER PROMPT. do not do anything more.
     - Gather all necessary information before tweeting.
     - Be engaging and creative. stick to the facts.
-    - Refer to the documentation for information and advertising.
+    - Refer to the documentation tool for all information and advertising.
     - When covering news use the internet search tool and be direct and informative. no advertising.
     - tutorials must be concise, factual, and based solely on the documentation.
     - MAKE NO MORE THAN 3 TWEETS AT A TIME.
     - ALL TWEETS MUST BE A UNIQUE TOPIC OR SUBJECT RELATED TO THE TOPIC.
-    - ALL TWEETS MUST BE NO MORE THAN 280 CHARACTERS. THAT IS THE TWITTER LIMIT.
+    - ALL TWEETS MUST BE NO MORE THAN 270 CHARACTERS. THAT IS THE TWITTER LIMIT.
+    - DO NOT SPAM TWEETS.
+    - No links in tweets, only hashtags.
     """
 
     if user_prompt == "":
         user_prompt = "No user prompt provided. tweet on your own following the system prompt. pick a topic from the list."
 
     prompt = f"""
+    USER PROMPT: {user_prompt}
     SYSTEM PROMPT: {system_prompt}
-    USER PROMPT: {user_prompt}\n"""
+    \n"""
 
     try:
         for chunk in agent_executor.stream(
             {"messages": [HumanMessage(content=prompt)]}, config
         ):
-            logging.info(f"Agent response chunk: {chunk}")
-            yield chunk
+            # Log the chunk to see its structure
+            logging.debug(f"Agent response chunk: {chunk}")
+
+            # Ensure the chunk is JSON-serializable
+            if isinstance(chunk, dict):
+                try:
+                    json_chunk = json.dumps(chunk)
+                    logging.debug(f"Serialized JSON chunk: {json_chunk}")
+                    yield json_chunk
+                except TypeError as e:
+                    logging.error(f"Serialization error: {e}")
+            else:
+                logging.error("Chunk is not a dictionary and cannot be serialized to JSON.")
     except Exception as e:
-       print(e)
+        logging.error(f"An error occurred: {e}")
+
+
 
 
 

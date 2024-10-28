@@ -1,10 +1,12 @@
 import logging
+import json
 from flask import Flask, render_template, request, Response, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from agent import Agent
+from langchain_core.messages import AIMessage
 
 # Set up logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Set a secret key for session management
@@ -46,22 +48,46 @@ def index():
 def agent():
     if request.method == 'POST':
         data = request.form['prompt']
+        logging.debug(f"Received POST data: {data}")
         app.config['PROMPT'] = data  # Store the prompt in the app config
         return '', 204  # Return no content for POST
 
     if request.method == 'GET':
         prompt = app.config.get('PROMPT', '')
+        logging.debug(f"Using prompt for GET: {prompt}")
         return Response(stream_agent_response(prompt), mimetype='text/event-stream')
 
 def stream_agent_response(prompt):
     for chunk in Agent(prompt):
-        logging.info(f"Streaming chunk: {chunk}")
-        yield f"data: {chunk}\n\n"
+        logging.debug(f"Streaming chunk: {chunk}")
+        
+        # Convert the AIMessage object to a dictionary or JSON-serializable format
+        if isinstance(chunk, dict):
+            # Assuming the AIMessage is within a dictionary structure
+            messages = chunk.get('agent', {}).get('messages', [])
+            for message in messages:
+                if isinstance(message, AIMessage):
+                    # Convert AIMessage to a dictionary
+                    message_dict = {
+                        'content': message.content,
+                        'additional_kwargs': message.additional_kwargs,
+                        'response_metadata': message.response_metadata,
+                        'id': message.id,
+                        'usage_metadata': message.usage_metadata
+                    }
+                    logging.debug(f"Serialized message: {message_dict}")
+                    yield f"data: {json.dumps(message_dict)}\n\n"
+                else:
+                    logging.debug(f"Serialized message: {message}")
+                    yield f"data: {json.dumps(message)}\n\n"
+        else:
+            logging.error("Chunk is not a dictionary and cannot be serialized to JSON.")
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
         password = request.form['password']
+        logging.debug(f"Login attempt with password: {password}")
         if password == '42069':
             session['logged_in'] = True
             return redirect(url_for('index'))
