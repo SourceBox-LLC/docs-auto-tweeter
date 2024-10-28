@@ -1,8 +1,9 @@
 import logging
 from dotenv import load_dotenv
 import os
-from openai import OpenAI
+from openai import OpenAI 
 from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic  # Import Anthropic chat model
 from langgraph.checkpoint.memory import MemorySaver
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.tools import tool
@@ -29,7 +30,6 @@ search = TavilySearchResults(max_results=2)
 
 # Create an OpenAI client
 client = OpenAI()
-
 
 # Replace these with your actual credentials
 consumer_key = os.getenv('CONSUMER_KEY')
@@ -65,13 +65,22 @@ def Agent(user_prompt):
         logging.info(f"Generated image URL: {image_url}")
         return image_url
 
-
     # search the sourcebox docs
     @tool
     def sourcebox_docs(prompt: str) -> str:
         """Search the Sourcebox docs."""
         db = scrape_docs()
-        results = query_docs(db, prompt)
+        try:
+            results = query_docs(db, prompt)
+        except Exception as e:
+            if "rate limit" in str(e).lower() or "429" in str(e):
+                logging.warning("OpenAI rate limit exceeded, switching to Anthropic.")
+                # Fallback to Anthropic embeddings
+                anthropic_embeddings = AnthropicEmbeddings()
+                db = DeepLake(dataset_path="./my_deeplake/", embedding=anthropic_embeddings, overwrite=True)
+                results = query_docs(db, prompt)
+            else:
+                raise e
         logging.info(f"Sourcebox docs search results: {results}")
         return results
 
@@ -141,21 +150,24 @@ def Agent(user_prompt):
     # Define the system prompt
     system_prompt = f"""
     You are the lead social media manager for SourceBox LLC with access to tools for creating tweets. 
-    Your job is to:
-    1. tweet about the latest platform updates.
+    Your job is to tweet about:
+    1. latest platform updates.
     2. advertise services from the documentation
-    3. create and tweet a step by step user tutorial using information from the documentation.
-    4. tweet about the benefits of using SourceBox
-    5. tweet about AI news and fun facts using internet search tool
+    3. step by step user tutorial using information from the documentation.
+    4. benefits of using SourceBox using information from the documentation.
+    5. AI news and fun facts using internet search tool
 
     RULES:
-    be engaging and creative. stick to the facts.
-    Cover all range of topics in the documentation.
-    when covering news be direct and informative. no advertising.
-    all tweets must be no more than 280 characters. That is the twitter limit.
-    make no more than 2 tweets.
+    - DO NOT SPAM TWEETS.
+    - Gather all necessary information before tweeting.
+    - Be engaging and creative. stick to the facts.
+    - Refer to the documentation for information and advertising.
+    - When covering news use the internet search tool and be direct and informative. no advertising.
+    - tutorials must be concise, factual, and based solely on the documentation.
+    - MAKE NO MORE THAN 3 TWEETS AT A TIME.
+    - ALL TWEETS MUST BE A UNIQUE TOPIC OR SUBJECT RELATED TO THE TOPIC.
+    - ALL TWEETS MUST BE NO MORE THAN 280 CHARACTERS. THAT IS THE TWITTER LIMIT.
     """
-
 
     if user_prompt == "":
         user_prompt = "No user prompt provided. tweet on your own following the system prompt. pick a topic from the list."
@@ -164,9 +176,15 @@ def Agent(user_prompt):
     SYSTEM PROMPT: {system_prompt}
     USER PROMPT: {user_prompt}\n"""
 
+    try:
+        for chunk in agent_executor.stream(
+            {"messages": [HumanMessage(content=prompt)]}, config
+        ):
+            logging.info(f"Agent response chunk: {chunk}")
+            yield chunk
+    except Exception as e:
+       print(e)
 
-    for chunk in agent_executor.stream(
-        {"messages": [HumanMessage(content=prompt)]}, config
-    ):
-        logging.info(f"Agent response chunk: {chunk}")
-        yield chunk
+
+
+

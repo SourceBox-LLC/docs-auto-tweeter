@@ -1,49 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SourceBox Social Media</title>
-    <script>
-        function startStream() {
-            const form = document.querySelector('form');
-            const formData = new FormData(form);
-            const prompt = formData.get('prompt');
+{% extends "base.html" %}
 
-            // Send the prompt using fetch
-            fetch('/agent', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({ prompt: prompt })
-            }).then(response => {
-                if (response.ok) {
-                    // Start the EventSource stream
-                    const eventSource = new EventSource('/agent');
-                    eventSource.onmessage = function(event) {
-                        const output = document.getElementById('output');
-                        output.innerHTML += event.data + "<br>";
-                    };
-                } else {
-                    console.error('Failed to send prompt');
-                }
-            }).catch(error => console.error('Error:', error));
-        }
-    </script>
-</head>
-<body>
+{% block title %}SourceBox Social Media{% endblock %}
+
+{% block content %}
+<div align="center">
     <h1>SourceBox Social Media</h1>
+    <br/>
     <form onsubmit="startStream(); return false;">
-        <select name="prompt">
-            <option value="tweet about the latest platform updates.">tweet about the latest platform updates.</option>
-            <option value="advertise services from the documentation.">advertise services from the documentation.</option>
-            <option value="create a step by step user tutorial using information from the documentation.">create a step by step user tutorial using information from the documentation.</option>
-            <option value="tweet about the benefits of using SourceBox">tweet about the benefits of using SourceBox</option>
-            <option value="tweet about recent AI news and fun facts using internet search tool">tweet about recent AI news and fun facts using internet search tool</option>
-        </select>
-        <button type="submit">Submit</button>
+        <div class="form-group">
+            <select name="prompt" class="form-control">
+                <option value="prompt1">tweet about the latest platform updates.</option>
+
+                <option value="prompt2">advertise services from the documentation.</option>
+
+                <option value="prompt3">create a step by step user tutorial using information from the documentation.</option>
+
+                <option value="prompt4">tweet about the benefits of using SourceBox using information from the documentation.</option>
+
+                <option value="prompt5">tweet about recent AI news and fun facts using internet search tool</option>
+
+                <option value="prompt6">Describe how SourceBox can be applied in real-world projects, highlighting a specific use case from the documentation.</option>
+
+                <option value="prompt7">Highlight a unique feature of SourceBox and explain how it benefits developers or companies.</option>
+                
+                <option value="prompt8">tweet about recent AI news, using internet search tool</option>
+
+                <option value="prompt9">tweet about an interesting fact about AI</option>
+
+                <option value="prompt10">Compare SourceBox with similar platforms, emphasizing why it's the better choice.</option>
+
+                <option value="prompt11">Engage followers by asking for feedback or suggestions on SourceBox’s features.</option>
+
+                <option value="prompt12">Tweet about a recent AI-related event or announcement.</option>
+
+                <option value="prompt13">Tweet an inspiring quote about the future of AI or software development to resonate with followers.</option>
+
+                <option value="prompt14">Create a quick-start guide or beginner-friendly tip for new users, based on documentation.</option>
+
+                <option value="prompt15">Emphasize SourceBox’s commitment to security and reliability.</option>
+            </select>
+        </div>
+        <div class="form-group row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-secondary btn-block" onclick="selectRandomPrompt()">Random</button>
+            </div>
+        </div>
     </form>
-    <div id="output"></div>
-</body>
-</html>
+    <br/>
+    <button type="button" class="btn btn-danger" onclick="toggleCustomPrompt()">Custom Prompt</button>
+    <div id="customPromptArea" style="display: none; margin-top: 10px;">
+        <textarea id="customPromptText" class="form-control" rows="4" placeholder="Enter your custom prompt here..."></textarea>
+        <p>Press Enter to submit</p>
+    </div>
+</div>
+<br/>
+<h2 align="center">AgentOutput</h2>
+<div class="container border border-dark rounded">
+    <div id="output" class="mt-3"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='scripts.js') }}"></script>
+{% endblock %}
